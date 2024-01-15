@@ -66,4 +66,11 @@ class AjoutLigneTest {
             () -> service.ajouterLigne(NUMERO_COMMANDE_PAS_LIVREE, REFERENCE_PRODUIT_DISPONIBLE_4, quantiteMaximumCommandable + 1),
             "La quantité commandée ne doit pas dépasser le stock disponible");
     }
+
+    @Test
+    void throwProduitIndisponible() {
+        assertThrows(IllegalStateException.class,
+            () -> service.ajouterLigne(NUMERO_COMMANDE_PAS_LIVREE, REFERENCE_PRODUIT_INDISPONIBLE, 1),
+            "Le produit est indisponible");
+    }
 }
